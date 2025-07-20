@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NZWalks.API.Models.Domain.Country;
 
 namespace NZWalks.API.Data;
 
-public partial class CountryDbContext : DbContext
+public partial class CountryDbContext(DbContextOptions<CountryDbContext> options) : DbContext(options)
 {
-    public CountryDbContext(DbContextOptions<CountryDbContext> options)
-        : base(options)
-    {
-    }
-
     public virtual DbSet<City> Cities { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
